@@ -6,8 +6,8 @@
   <title>My World | Private Reflections</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Robust polyfill to prevent ReferenceErrors before the build process or if API key is missing
-    window.process = window.process || { env: { API_KEY: "" } };
+    // Define process.env globally to prevent reference errors in modules
+    window.process = { env: { API_KEY: "" } };
     
     tailwind.config = {
       darkMode: 'class',
@@ -15,7 +15,7 @@
         extend: {
           colors: {
             dark: {
-              bg: '#0a0c10',
+              bg: '#050505',
               card: '#161a22',
               border: 'rgba(255, 255, 255, 0.06)',
             }
@@ -73,6 +73,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+  <!-- Use relative path for Vite entry point -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
