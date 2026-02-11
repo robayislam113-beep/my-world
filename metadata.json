@@ -1,0 +1,7 @@
+{
+  "name": "My World",
+  "description": "A private, expressive social media space designed for mental relaxation and reflection, providing a Twitter-like experience with guaranteed positive engagement and supportive AI-driven feedback.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
