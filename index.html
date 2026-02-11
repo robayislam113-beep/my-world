@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     // Define process.env globally to prevent reference errors in modules
-    window.process = { env: { API_KEY: "" } };
+    window.process = window.process || { env: { API_KEY: "" } };
     
     tailwind.config = {
       darkMode: 'class',
@@ -73,7 +73,6 @@
 </head>
 <body>
   <div id="root"></div>
-  <!-- Use relative path for Vite entry point -->
-  <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

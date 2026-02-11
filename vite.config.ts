@@ -5,7 +5,11 @@ export default defineConfig({
   plugins: [react()],
   define: {
     // This allows process.env.API_KEY to be replaced with the actual value during build
-    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || '')
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || ''),
+    // Polyfill the process.env object for modules that check it directly
+    'process.env': {
+        API_KEY: JSON.stringify(process.env.API_KEY || '')
+    }
   },
   server: {
     port: 3000,
