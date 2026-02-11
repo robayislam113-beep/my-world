@@ -6,6 +6,7 @@
   <title>My World | Private Reflections</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // Robust polyfill to prevent ReferenceErrors before the build process or if API key is missing
     window.process = window.process || { env: { API_KEY: "" } };
     
     tailwind.config = {

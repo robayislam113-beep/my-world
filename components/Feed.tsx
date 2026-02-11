@@ -1,6 +1,6 @@
 import React from 'react';
-import { Post, UserProfile } from '../types.ts';
-import PostCard from './PostCard.tsx';
+import { Post, UserProfile } from '../types';
+import PostCard from './PostCard';
 
 interface FeedProps {
   posts: Post[];

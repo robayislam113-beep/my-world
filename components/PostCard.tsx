@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Post, UserProfile, Comment } from '../types.ts';
+import { Post, UserProfile, Comment } from '../types';
 
 interface PostCardProps {
   post: Post;

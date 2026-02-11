@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { UserProfile, Post } from '../types.ts';
-import PostCard from './PostCard.tsx';
+import { UserProfile, Post } from '../types';
+import PostCard from './PostCard';
 
 interface ProfileViewProps {
   profile: UserProfile;
