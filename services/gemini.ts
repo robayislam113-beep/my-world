@@ -2,19 +2,11 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Comment } from "../types";
 
-/**
- * My World uses Gemini AI to provide a supportive, non-toxic interaction layer.
- * Note: The API_KEY is expected to be provided via the environment.
- */
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
 
 const names = ["Alice", "Leo", "Sarah", "James", "Elena", "Marcus", "Sophie", "David", "Luna", "Aria", "Felix"];
 const handles = ["dreamer", "starlight", "gentle_soul", "echoes", "vibe_check", "serenity", "kind_heart", "growth_mindset", "pure_intent"];
 
-/**
- * Generates empathetic comments based on the user's reflection.
- * @param postContent The user's post text.
- */
 export const generateSupportiveComments = async (postContent: string): Promise<Comment[]> => {
   try {
     const response = await ai.models.generateContent({
@@ -54,7 +46,6 @@ export const generateSupportiveComments = async (postContent: string): Promise<C
     });
   } catch (error) {
     console.error("Gemini AI integration error:", error);
-    // Return empty array to fail gracefully without breaking the UI
     return [];
   }
 };

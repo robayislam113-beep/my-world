@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { Post, UserProfile } from '../types';
-import PostCard from './PostCard';
+import { Post, UserProfile } from '../types.ts';
+import PostCard from './PostCard.tsx';
 
 interface FeedProps {
   posts: Post[];
@@ -13,7 +12,6 @@ interface FeedProps {
 const Feed: React.FC<FeedProps> = ({ posts, userProfile, onLike, onCompose }) => {
   return (
     <div className="flex flex-col animate-in fade-in duration-500">
-      {/* Facebook style "What's on your mind?" Bar */}
       <div className="p-4 bg-white dark:bg-dark-bg border-b border-slate-100 dark:border-white/5 flex items-center gap-3">
         <div className="w-10 h-10 rounded-full overflow-hidden border border-slate-100 dark:border-white/10 flex-shrink-0">
           <img src={userProfile.avatar} alt="User" className="w-full h-full object-cover" />

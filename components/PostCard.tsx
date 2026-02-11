@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Post, UserProfile, Comment } from '../types';
+import { Post, UserProfile, Comment } from '../types.ts';
 
 interface PostCardProps {
   post: Post;
@@ -24,7 +23,6 @@ const PostCard: React.FC<PostCardProps> = ({ post, userProfile, onLike }) => {
     return `${Math.floor(seconds / 86400)}d`;
   };
 
-  // Reusable comment component for consistent styling
   const CommentItem = ({ comment, isFirst = false }: { comment: Comment; isFirst?: boolean }) => (
     <div className={`flex gap-4 group ${isFirst ? 'animate-in fade-in slide-in-from-top-2 duration-700' : ''}`}>
       <div className="shrink-0 pt-1">
@@ -76,7 +74,6 @@ const PostCard: React.FC<PostCardProps> = ({ post, userProfile, onLike }) => {
         {post.content}
       </p>
 
-      {/* Modern Engagement Bar */}
       <div className="flex items-center justify-between py-2 border-t border-slate-50 dark:border-white/5">
         <div className="flex -space-x-2">
            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center text-white ring-2 ring-white dark:ring-dark-bg shadow-md">
@@ -100,7 +97,6 @@ const PostCard: React.FC<PostCardProps> = ({ post, userProfile, onLike }) => {
         </div>
       </div>
       
-      {/* High-End Action Buttons */}
       <div className="flex items-center justify-between gap-2 mt-2">
         <PostAction 
           active={post.isLiked} 
@@ -123,9 +119,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, userProfile, onLike }) => {
         />
       </div>
 
-      {/* Comments Section */}
       <div className="mt-6 space-y-4">
-        {/* Loading State or First Comment Preview */}
         {post.comments.length === 0 ? (
           <div className="py-4 flex items-center gap-4 animate-pulse">
             <div className="w-9 h-9 bg-slate-100 dark:bg-white/5 rounded-[14px]"></div>
@@ -136,17 +130,14 @@ const PostCard: React.FC<PostCardProps> = ({ post, userProfile, onLike }) => {
           </div>
         ) : (
           <>
-            {/* Always show the first comment for instant validation */}
             <CommentItem comment={post.comments[0]} isFirst={true} />
             
-            {/* Show remaining comments only when toggled */}
             {showComments && post.comments.slice(1).map(comment => (
               <div key={comment.id} className="animate-in slide-in-from-top-4 duration-500">
                 <CommentItem comment={comment} />
               </div>
             ))}
 
-            {/* Hint to see more if there are more */}
             {post.comments.length > 1 && !showComments && (
               <button 
                 onClick={() => setShowComments(true)}

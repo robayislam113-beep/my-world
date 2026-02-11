@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
-import { UserProfile, Post } from '../types';
-import PostCard from './PostCard';
+import { UserProfile, Post } from '../types.ts';
+import PostCard from './PostCard.tsx';
 
 interface ProfileViewProps {
   profile: UserProfile;
@@ -45,7 +44,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ profile, posts, onUpdate, onL
 
   return (
     <div className="flex flex-col bg-white dark:bg-dark-bg min-h-full transition-colors duration-300">
-      {/* Banner / Cover Photo */}
       <div className="h-44 relative group">
         <div className="w-full h-full overflow-hidden bg-slate-200 dark:bg-slate-800">
           <img 
@@ -56,7 +54,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ profile, posts, onUpdate, onL
         </div>
         <div className="absolute inset-0 bg-black/10"></div>
         
-        {/* Banner Edit Overlay */}
         <label className="absolute top-4 right-4 z-30 w-10 h-10 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white cursor-pointer hover:bg-black/60 transition opacity-0 group-hover:opacity-100">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -64,7 +61,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ profile, posts, onUpdate, onL
           <input type="file" className="hidden" accept="image/*" onChange={handleBannerChange} />
         </label>
         
-        {/* Avatar Container */}
         <div className="absolute -bottom-14 left-6 z-20">
           <div className="relative group p-1 bg-white dark:bg-dark-bg rounded-[32px] shadow-lg">
             <div className="overflow-hidden rounded-[28px] w-28 h-28 border-2 border-white dark:border-white/10">
@@ -83,7 +79,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ profile, posts, onUpdate, onL
         </div>
       </div>
 
-      {/* Profile Actions & Info */}
       <div className="pt-4 px-6 pb-6">
         <div className="flex justify-end gap-2 items-center h-12">
           <button 
@@ -155,7 +150,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ profile, posts, onUpdate, onL
         </div>
       </div>
 
-      {/* Tabs */}
       <div className="flex border-b border-slate-100 dark:border-white/5 px-6 mt-2">
         <div className="relative py-4 px-4 font-bold text-slate-900 dark:text-white transition cursor-pointer">
           Reflections
@@ -166,7 +160,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ profile, posts, onUpdate, onL
         </div>
       </div>
 
-      {/* User's Posts */}
       <div className="flex flex-col pb-24">
         {posts.map(post => (
           <PostCard key={post.id} post={post} userProfile={profile} onLike={onLike} />

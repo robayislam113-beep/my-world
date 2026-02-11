@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Post, UserProfile } from './types';
 import Feed from './components/Feed';
 import ProfileView from './components/ProfileView';
@@ -29,7 +29,6 @@ const App: React.FC = () => {
     return (localStorage.getItem('mw_theme') as 'light' | 'dark') || 'light';
   });
 
-  // Handle Theme switching
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {
@@ -42,7 +41,6 @@ const App: React.FC = () => {
 
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
 
-  // Persistence
   useEffect(() => {
     const savedPosts = localStorage.getItem('mw_posts');
     const savedProfile = localStorage.getItem('mw_profile');
